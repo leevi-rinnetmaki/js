@@ -1,7 +1,6 @@
 'use strict';
-
-//const tehtava = Number(prompt("Mikä tehtävä?"));
 const juttu = document.getElementById("juttu")
+
 function leapCounter(year){
     if(year%100==0){
         if(year%400 == 0){
@@ -16,26 +15,36 @@ function leapCounter(year){
     }
 }
 
+function primeCalculator(x){
+    if(x>1 && x==Math.floor(x)){
+        for(let z = 2; x>z; z++){
+            if(x % z == 0){
+                return false
+            }
+        }
+        return true
+    }
+    else{
+        return false;
+    }
+}
+
+function dice(rolls, sides){
+    let rollSum = 0;
+    for(let x=0; x<rolls; x++){
+        rollSum += Math.floor((Math.random()*sides)+1);
+        console.log(rollSum);
+    }
+    return rollSum;
+}
+
 function choice(decision){
     switch(decision){
 
+        case -1:
+            juttu.innerHTML="";
+            break;
         case 0:
-            /*
-            let test = prompt("test");
-            */
-            /*
-            let ele = document.createElement("p");
-            let nod = document.createTextNode(test);
-            ele.appendChild(nod);
-            juttu.appendChild(ele);
-            */
-            /*
-            juttu.appendChild(document.createElement("p").appendChild(document.createTextNode(test)));
-            */
-            /*
-            juttu.appendChild(document.createElement("p").appendChild(document.createTextNode(prompt("test"))));
-            */
-
             const addTest = document.createElement("p");
             addTest.appendChild(document.createTextNode("test"));
             juttu.appendChild(addTest);
@@ -60,22 +69,22 @@ function choice(decision){
             break;
 
         case 4:
-            let school = Math.floor(Math.random()*4)+1;
+            let school = Math.floor(Math.random()*4);
             let studentName = prompt("What is the students name? ")
             switch(school){
-                case 1:
+                case 0:
                     school="Gryffindor"
                     juttu.innerHTML=`${studentName}, you are ${school}`;
                     break;
-                case 2:
+                case 1:
                     school="Slytherin"
                     juttu.innerHTML=`${studentName}, you are ${school}`;
                     break;
-                case 3:
+                case 2:
                     school="Hufflepuff"
                     juttu.innerHTML=`${studentName}, you are ${school}`;
                     break;
-                case 4:
+                case 3:
                     school="Ravenclaw"
                     juttu.innerHTML=`${studentName}, you are ${school}`;
                     break;
@@ -127,26 +136,75 @@ function choice(decision){
             break;
 
         case 7:
+            /*
             const rolls = prompt("How many dice rolls? :) ");
             let rollSum = 0;
             for(let x = rolls; x>0; x--){
                 rollSum+=Math.floor((Math.random()*6)+1)
             }
             juttu.innerHTML=rollSum;
+            */
+            juttu.innerHTML=dice(prompt("How many dice rolls? :) "), 6);
             break;
 
         case 8:
             const startYear = prompt("Start year? :)");
             const endYear = prompt("End year? :)");
             juttu.innerHTML=""
+            juttu.appendChild(document.createElement("ul"));
             for(let x=startYear; x < endYear; x++){
                 console.log(x, leapCounter(x));
                 if(leapCounter(x)){
                     const addListElement = document.createElement("li");
                     addListElement.appendChild(document.createTextNode(x));
-                    juttu.appendChild(addListElement);
+                    juttu.firstChild.appendChild(addListElement);
                 }
             }
+            break;
+
+        case 9:
+            const possiblePrime = prompt("Give me a number, and I will calculate if it's a prime.");
+            if(primeCalculator(possiblePrime)){
+                juttu.innerHTML=`${possiblePrime} is a prime number :)`;
+            }
+            else{
+                juttu.innerHTML=`${possiblePrime} is not a prime number :(`;
+            }
+            break;
+        
+        case 10:
+            const numberOfDice = prompt("How many dice?");
+            const sumOfTheEye = prompt("Sum of the eye numers?");
+            let sumReached = 0;
+            let sumNotReached = 0;
+            let temporaryEyeSum = 0;
+            let pointer = 0;
+            let diceRolls = []
+            for(let fill = 0; fill < numberOfDice; fill++){
+                diceRolls.push(1);
+            }
+
+            for(let ender = 0; ender < 6**numberOfDice; ender++){
+                for(let eye of diceRolls){
+                    temporaryEyeSum += eye;
+                    /*console.log(temporaryEyeSum);*/
+                }
+                if(temporaryEyeSum == sumOfTheEye){
+                    sumReached += 1;
+                }
+                else{
+                    sumNotReached += 1;
+                }
+                temporaryEyeSum = 0;
+                pointer = 0;
+
+                while(diceRolls[pointer]>=6){
+                    diceRolls[pointer]=1;
+                    pointer++;
+                }
+                diceRolls[pointer]++;
+            }
+            juttu.innerHTML=`${((sumReached/(6**numberOfDice))*100).toFixed(2)}%`;
             break;
 
         default:
