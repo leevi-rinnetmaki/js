@@ -1,5 +1,5 @@
 'use strict';
-const juttu = document.getElementById("juttu")
+const juttu = document.getElementById("juttu");
 
 function leapCounter(year){
     if(year%100==0){
@@ -19,10 +19,10 @@ function primeCalculator(x){
     if(x>1 && x==Math.floor(x)){
         for(let z = 2; x>z; z++){
             if(x % z == 0){
-                return false
+                return false;
             }
         }
-        return true
+        return true;
     }
     else{
         return false;
@@ -41,6 +41,15 @@ function dice(rolls, sides){
 function choice(decision){
     switch(decision){
 
+        case -2:
+            setInterval(myTimer, 100);
+            function myTimer() {
+                let spammi = document.createElement("p");
+                spammi.appendChild(document.createTextNode("späm"));
+                juttu.appendChild(spammi);
+            }
+            break;
+
         case -1:
             juttu.innerHTML="";
             break;
@@ -52,7 +61,7 @@ function choice(decision){
             break;
 
         case 1:
-            console.log("I'm printing to console!")
+            console.log("I'm printing to console!");
             juttu.innerHTML="You might want to open the console :)";
             break;
 
@@ -65,27 +74,27 @@ function choice(decision){
             const eka = Number(prompt("First? "));
             const toka = Number(prompt("Second? "));
             const kolmas = Number(prompt("Third? "));
-            juttu.innerHTML=`sum: ${eka+toka+kolmas} product: ${eka*toka*kolmas} average: ${(eka+toka+kolmas)/3}`;
+            juttu.innerHTML=`sum: ${eka+toka+kolmas}<br> product: ${eka*toka*kolmas}<br> average: ${(eka+toka+kolmas)/3}`;
             break;
 
         case 4:
             let school = Math.floor(Math.random()*4);
-            let studentName = prompt("What is the students name? ")
+            let studentName = prompt("What is the students name? ");
             switch(school){
                 case 0:
-                    school="Gryffindor"
+                    school="Gryffindor";
                     juttu.innerHTML=`${studentName}, you are ${school}`;
                     break;
                 case 1:
-                    school="Slytherin"
+                    school="Slytherin";
                     juttu.innerHTML=`${studentName}, you are ${school}`;
                     break;
                 case 2:
-                    school="Hufflepuff"
+                    school="Hufflepuff";
                     juttu.innerHTML=`${studentName}, you are ${school}`;
                     break;
                 case 3:
-                    school="Ravenclaw"
+                    school="Ravenclaw";
                     juttu.innerHTML=`${studentName}, you are ${school}`;
                     break;
             }
@@ -131,7 +140,7 @@ function choice(decision){
                 }
             }
             else{
-                juttu.innerHTML="The square root is not calculated."
+                juttu.innerHTML="The square root is not calculated.";
             }
             break;
 
@@ -150,7 +159,7 @@ function choice(decision){
         case 8:
             const startYear = prompt("Start year? :)");
             const endYear = prompt("End year? :)");
-            juttu.innerHTML=""
+            juttu.innerHTML="";
             juttu.appendChild(document.createElement("ul"));
             for(let x=startYear; x < endYear; x++){
                 console.log(x, leapCounter(x));
@@ -179,12 +188,13 @@ function choice(decision){
             let sumNotReached = 0;
             let temporaryEyeSum = 0;
             let pointer = 0;
-            let diceRolls = []
+            let diceRolls = [];
             for(let fill = 0; fill < numberOfDice; fill++){
                 diceRolls.push(1);
             }
 
             for(let ender = 0; ender < 6**numberOfDice; ender++){
+                console.log(diceRolls);
                 for(let eye of diceRolls){
                     temporaryEyeSum += eye;
                     /*console.log(temporaryEyeSum);*/
@@ -208,7 +218,7 @@ function choice(decision){
             break;
 
         default:
-            console.log("default")
+            console.log("default");
             juttu.innerHTML="default";
             break;
     }

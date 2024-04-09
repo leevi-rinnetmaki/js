@@ -41,5 +41,7 @@ button:hover{
 
 button:active {
     background-color: #3e8e41;
-    transform: translateY(10px);
+    background-color: rgb(255, 185, 105);
+
+    transform: translateY(6px);
   }
