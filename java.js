@@ -33,7 +33,6 @@ function dice(rolls, sides){
     let rollSum = 0;
     for(let x=0; x<rolls; x++){
         rollSum += Math.floor((Math.random()*sides)+1);
-        console.log(rollSum);
     }
     return rollSum;
 }
@@ -43,7 +42,7 @@ function choice(decision){
 
         case -2:
             setInterval(myTimer, 100);
-            function myTimer() {
+            function myTimer(){
                 let spammi = document.createElement("p");
                 spammi.appendChild(document.createTextNode("späm"));
                 juttu.appendChild(spammi);
@@ -109,23 +108,6 @@ function choice(decision){
             else{
                 juttu.innerHTML=`${year} is not a leap year :(`;
             }
-            /*
-            let leap = false;
-            if(year%100==0){
-                if(year%400 == 0){
-                    leap = true;
-                }
-            }
-            else if(year%4 == 0){
-                leap = true;
-            }
-            if(leap){
-                juttu.innerHTML=`${year} is a leap year :)`;
-            }
-            else{
-                juttu.innerHTML=`${year} is not a leap year :(`;
-            }
-            */
             break;
 
         case 6:
@@ -145,15 +127,7 @@ function choice(decision){
             break;
 
         case 7:
-            /*
-            const rolls = prompt("How many dice rolls? :) ");
-            let rollSum = 0;
-            for(let x = rolls; x>0; x--){
-                rollSum+=Math.floor((Math.random()*6)+1)
-            }
-            juttu.innerHTML=rollSum;
-            */
-            juttu.innerHTML=dice(prompt("How many dice rolls? :) "), 6);
+            juttu.innerHTML=`The sum of the dice rolls is ${dice(prompt("How many dice rolls? :) "), 6)}.`;
             break;
 
         case 8:
@@ -162,7 +136,6 @@ function choice(decision){
             juttu.innerHTML="";
             juttu.appendChild(document.createElement("ul"));
             for(let x=startYear; x < endYear; x++){
-                console.log(x, leapCounter(x));
                 if(leapCounter(x)){
                     const addListElement = document.createElement("li");
                     addListElement.appendChild(document.createTextNode(x));
@@ -180,8 +153,23 @@ function choice(decision){
                 juttu.innerHTML=`${possiblePrime} is not a prime number :(`;
             }
             break;
-        
+
+
+        /*I originally made case 11 to be my solution for the 10th assignment, but once I finished doing it, I realized that I did it the wrong way so I decide to write the worst code possible for the 10th assignment. Enjoy :)*/
         case 10:
+            var fdsaokfjsldjfs = prompt("How many dice?");
+            var fsagadgdfgdfgdf = prompt("Sum of the eye numers?");
+            var sasfdjjkadau = 0;
+            for (var asdafdsagsfghs=0; asdafdsagsfghs<1*10**4; asdafdsagsfghs+=1*10**0){
+                if(fsagadgdfgdfgdf == dice(fdsaokfjsldjfs, 6)){
+                    sasfdjjkadau += 1*10**0;
+                }
+            }
+            juttu.innerHTML=`${((sasfdjjkadau/(1*10**4))*100).toFixed(2)}%`;
+            break;
+            
+        /*A better solution for the 10th assignment as it gives more accurate results.*/
+        case 11:
             const numberOfDice = prompt("How many dice?");
             const sumOfTheEye = prompt("Sum of the eye numers?");
             let sumReached = 0;
@@ -197,7 +185,6 @@ function choice(decision){
                 console.log(diceRolls);
                 for(let eye of diceRolls){
                     temporaryEyeSum += eye;
-                    /*console.log(temporaryEyeSum);*/
                 }
                 if(temporaryEyeSum == sumOfTheEye){
                     sumReached += 1;

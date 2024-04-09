@@ -37,11 +37,13 @@ button{
 
 button:hover{
     background-color: rgb(255, 170, 70);
+    visibility: visible;
 }
 
-button:active {
+button:active{
     background-color: #3e8e41;
     background-color: rgb(255, 185, 105);
 
     transform: translateY(6px);
   }
+
