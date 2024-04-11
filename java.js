@@ -1,5 +1,6 @@
 'use strict';
 const juttu = document.getElementById("juttu");
+const juttu2 = document.getElementById("juttu2");
 
 function leapCounter(year){
     if(year%100==0){
@@ -208,5 +209,142 @@ function choice(decision){
             console.log("default");
             juttu.innerHTML="default";
             break;
+    }
+}
+
+function choice2(decision){
+
+    function j2clear(cleared=juttu2){
+        cleared.innerHTML="";
+    }
+
+    function j2create(ele, con, att){
+        let elementt = document.createElement(ele);
+        let contentt = document.createTextNode(con);
+        elementt.appendChild(contentt);
+        elementt.setAttribute(att[0], att[1]);
+        return elementt;
+    }
+
+    function j2add(ad, whereAdd=juttu2){
+        whereAdd.appendChild(ad);
+    }
+
+    function j2cadd(ele, con, att, whereAdd=juttu2){
+       j2add(j2create(ele, con, att), whereAdd);
+    }
+
+    function j2addList(ou, items){
+        j2clear();
+        j2cadd(ou, "" ,["id", "array"]);
+        for (let i of items){
+            j2cadd("li", i, ["class", "arrayItem"], document.getElementById('array'));
+        }
+    }
+
+    switch(decision){
+        case -1:
+            j2clear();
+            break;
+
+        case 0:{
+            j2cadd("div", "hi", ["id", "idtest"]);
+            j2addList("ul", [2,5,3]);
+            break;
+        }
+
+        case 1:{
+            let numbers = [];
+            for (let i=0; i<5; i++){
+                numbers.push(prompt(`Number ${i+1}`));
+            }
+            for(let i in numbers){
+                console.log(numbers[4-i]);
+            }
+            break;
+        }
+
+        case 2:{
+            j2clear();
+            let participants = [];
+            for (let i=prompt("How many participants?"); i>0; i--){
+                participants.push(prompt(`Participant ${participants.length+1}`));
+            }
+            participants.sort();
+            j2cadd("ol", "" ,["id", "orderedArray"]);
+            for (let i of participants){
+                j2cadd("li", i, ["class", "class"], document.getElementById('orderedArray'));
+            }
+            break;
+        }
+
+        case 3:{
+            j2clear();
+            let dogs = [];
+            for (let i=0; i<6; i++){
+                dogs.push(prompt(`Dog ${i+1}?`));
+            }
+            dogs.reverse();
+            j2cadd("ul", "" ,["id", "unorderedArray"]);
+            for (let i of dogs){
+                j2cadd("li", i, ["class", "class"], document.getElementById('unorderedArray'));
+            }
+            break;
+        }
+
+        case 4:{
+            let number = null;
+            let numbers = [];
+            do{
+                number = prompt("Give me anumber");
+                numbers.push(number);
+            }
+            while(number != 0);
+            numbers.sort(function(a, b){return b - a});
+            console.log(numbers);
+            break;
+        }
+
+        case 5:{
+            let number = null;
+            let numbers = [];
+            do{
+                number=prompt("Give me a number");
+                if(numbers.includes(number)){
+                    numbers.push(number);
+                    numbers.sort(function(a, b){return a - b});
+                    console.log(numbers);
+                    break;
+                }
+                else{
+                    numbers.push(number);
+                }
+
+            }
+            while(numbers.includes(number));
+            break;
+        }
+
+        case 6:{
+            function diceRolls(){
+                return dice(1,6)
+            }
+            j2clear();
+            let roll=diceRolls();
+            let rolls=[];
+            while(roll!=6){
+                rolls.push(roll);
+                roll=diceRolls();
+            }
+            rolls.push(roll);
+            j2addList("ul", rolls);
+            break;
+        }
+
+        case 7:{
+            function diceRollsWithCustomQuantityOfSides(sides){
+                return dice(1,sides);
+            }
+        }
     }
 }

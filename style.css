@@ -27,8 +27,16 @@ body{
     padding: 20px 0px;
 }
 
-button{
+.buttons button{
     background-color: #ff055d;
+    color: white;
+    padding: 20px;
+    font-size: 150%;
+    cursor:pointer;
+}
+
+.buttons2 button{
+    background-color: #3b05ff;
     color: white;
     padding: 20px;
     font-size: 150%;
