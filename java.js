@@ -1,4 +1,7 @@
 'use strict';
+/*
+navigator.geolocation.getCurrentPosition();
+*/
 const juttu = document.getElementById("juttu");
 const juttu2 = document.getElementById("juttu2");
 
@@ -230,7 +233,7 @@ function choice2(decision){
         whereAdd.appendChild(ad);
     }
 
-    function j2cadd(ele, con, att, whereAdd=juttu2){
+    function j2cadd(ele, con, att=["class", "default"], whereAdd=juttu2){
        j2add(j2create(ele, con, att), whereAdd);
     }
 
@@ -250,6 +253,8 @@ function choice2(decision){
         case 0:{
             j2cadd("div", "hi", ["id", "idtest"]);
             j2addList("ul", [2,5,3]);
+            let testiper = [{name: "Leevi"},{name: "Matti"}];
+            console.log(testiper, testiper.name);
             break;
         }
 
@@ -285,10 +290,13 @@ function choice2(decision){
                 dogs.push(prompt(`Dog ${i+1}?`));
             }
             dogs.reverse();
+            /*
             j2cadd("ul", "" ,["id", "unorderedArray"]);
             for (let i of dogs){
                 j2cadd("li", i, ["class", "class"], document.getElementById('unorderedArray'));
             }
+            */
+           j2addList("li", dogs);
             break;
         }
 
@@ -344,6 +352,75 @@ function choice2(decision){
         case 7:{
             function diceRollsWithCustomQuantityOfSides(sides){
                 return dice(1,sides);
+            }
+            j2clear();
+            const diceSides = prompt("How many sides?");
+            let roll=diceRollsWithCustomQuantityOfSides(diceSides);
+            let rolls=[];
+            while(roll!=diceSides){
+                rolls.push(roll);
+                roll=diceRollsWithCustomQuantityOfSides(diceSides);
+                console.log(roll, rolls);
+            }
+            rolls.push(roll);
+            j2addList("ul", rolls);
+            break;
+        }
+        case 8:{
+            function concat(stringArray){
+                return stringArray.join("");
+            }
+            const pirateArray = ["Black Beard", "Henry Morgan", "Anne Bonny", "William Kid"];
+            j2cadd("div", concat(pirateArray));
+            break;
+        }
+
+        case 9:{
+            const numbers = [0,1,2,3,4,5,6,7,8,9];
+            function even(numArray){
+                let returnArray = [];
+                for (let i of numArray){
+                    if(i%2==0){
+                        returnArray.push(i);
+                    }
+                }
+                return returnArray;
+            }
+            even(numbers);
+            j2cadd("div", numbers)
+            j2cadd("div", even(numbers));
+            console.log(numbers, even(numbers));
+            break;
+        }
+
+        case 10:{
+            const amount = prompt("How many canditates?");
+            let canditates = [];
+            for (let i = 0; i < amount; i++){
+                let name = prompt(`Name for candidate ${i+1}`);
+                canditates.push({name: name, votes: 0});
+            }
+            const voters = prompt("How many voters?");
+            let vote;
+            for (let i = 0; i < voters; i++){
+                vote = prompt("Who will you vote? :)");
+                for (let i of canditates){
+                    if(i.name == vote){
+                        i.votes++;
+                    }
+                }
+            }
+            let winnerIndex = 0;
+            let winnerVotes = 0;
+            for (let i in canditates){
+                if (canditates[i].votes > winnerVotes){
+                    winnerVotes=canditates[i].votes;
+                    winnerIndex=i;
+                }
+            }
+            console.log(`The winner is ${canditates[winnerIndex].name}!`);
+            for (let i of canditates){
+                console.log(`${i.name}: ${i.votes} votes.`);
             }
         }
     }
