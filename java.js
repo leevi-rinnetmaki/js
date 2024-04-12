@@ -270,16 +270,18 @@ function choice2(decision){
         }
 
         case 2:{
-            j2clear();
             let participants = [];
             for (let i=prompt("How many participants?"); i>0; i--){
                 participants.push(prompt(`Participant ${participants.length+1}`));
             }
             participants.sort();
+            j2addList("ol", participants);
+            /*
             j2cadd("ol", "" ,["id", "orderedArray"]);
             for (let i of participants){
                 j2cadd("li", i, ["class", "class"], document.getElementById('orderedArray'));
             }
+            */
             break;
         }
 
@@ -290,13 +292,7 @@ function choice2(decision){
                 dogs.push(prompt(`Dog ${i+1}?`));
             }
             dogs.reverse();
-            /*
-            j2cadd("ul", "" ,["id", "unorderedArray"]);
-            for (let i of dogs){
-                j2cadd("li", i, ["class", "class"], document.getElementById('unorderedArray'));
-            }
-            */
-           j2addList("li", dogs);
+            j2addList("li", dogs);
             break;
         }
 
@@ -327,7 +323,6 @@ function choice2(decision){
                 else{
                     numbers.push(number);
                 }
-
             }
             while(numbers.includes(number));
             break;
@@ -387,7 +382,7 @@ function choice2(decision){
                 return returnArray;
             }
             even(numbers);
-            j2cadd("div", numbers)
+            j2cadd("div", numbers);
             j2cadd("div", even(numbers));
             console.log(numbers, even(numbers));
             break;
