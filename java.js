@@ -306,6 +306,7 @@ function choice2(decision){
             while(number != 0);
             numbers.sort(function(a, b){return b - a});
             console.log(numbers);
+            j2addList("ul", numbers);
             break;
         }
 
@@ -318,6 +319,7 @@ function choice2(decision){
                     numbers.push(number);
                     numbers.sort(function(a, b){return a - b});
                     console.log(numbers);
+                    j2addList("ul", numbers);
                     break;
                 }
                 else{
@@ -332,7 +334,6 @@ function choice2(decision){
             function diceRolls(){
                 return dice(1,6)
             }
-            j2clear();
             let roll=diceRolls();
             let rolls=[];
             while(roll!=6){
@@ -348,24 +349,24 @@ function choice2(decision){
             function diceRollsWithCustomQuantityOfSides(sides){
                 return dice(1,sides);
             }
-            j2clear();
             const diceSides = prompt("How many sides?");
             let roll=diceRollsWithCustomQuantityOfSides(diceSides);
             let rolls=[];
             while(roll!=diceSides){
                 rolls.push(roll);
                 roll=diceRollsWithCustomQuantityOfSides(diceSides);
-                console.log(roll, rolls);
             }
             rolls.push(roll);
             j2addList("ul", rolls);
             break;
         }
+
         case 8:{
             function concat(stringArray){
                 return stringArray.join("");
             }
             const pirateArray = ["Black Beard", "Henry Morgan", "Anne Bonny", "William Kid"];
+            j2clear();
             j2cadd("div", concat(pirateArray));
             break;
         }
