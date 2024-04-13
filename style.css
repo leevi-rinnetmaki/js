@@ -43,6 +43,14 @@ body{
     cursor:pointer;
 }
 
+.buttons4 button{
+    background-color: #00bd6e;
+    color: white;
+    padding: 20px;
+    font-size: 150%;
+    cursor:pointer;
+}
+
 button:hover{
     background-color: rgb(255, 170, 70);
     visibility: visible;

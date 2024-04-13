@@ -4,6 +4,15 @@ navigator.geolocation.getCurrentPosition();
 */
 const juttu = document.getElementById("juttu");
 const juttu2 = document.getElementById("juttu2");
+/*
+const juttu4 = document.getElementById("juttu4");
+
+function dumb(){
+    event.preventDefault();
+    document.getElementById("search").value;
+}
+document.getElementById("search").addEventListener("submit", dumb());
+*/
 
 function leapCounter(year){
     if(year%100==0){
@@ -159,7 +168,10 @@ function choice(decision){
             break;
 
 
-        /*I originally made case 11 to be my solution for the 10th assignment, but once I finished doing it, I realized that I did it the wrong way so I decide to write the worst code possible for the 10th assignment. Enjoy :)*/
+        /*I originally made case 11 to be my solution for the 10th assignment,
+        but once I finished doing it,
+        I realized that I did it the wrong way so I decide to write the worst code possible for the 10th assignment.
+        Enjoy :)*/
         case 10:
             var fdsaokfjsldjfs = prompt("How many dice?");
             var fsagadgdfgdfgdf = prompt("Sum of the eye numers?");
@@ -419,5 +431,24 @@ function choice2(decision){
                 console.log(`${i.name}: ${i.votes} votes.`);
             }
         }
+    }
+}
+
+function choice4(decision){
+    switch(decision){
+        case 1:{
+            
+        }
+    }
+}
+
+
+
+
+{
+    const x=null;
+    async function anyncTest (){
+        let z = x;
+        const x = await 0;
     }
 }
