@@ -98,31 +98,45 @@ const picArray = [
 
 
 
-function quinque(){
-  const target = document.getElementById("pictures");
-  let articles = [];
-  function make(element){
-    return document.createElement(element);
-  }
-  for(let i in picArray){
-    articles.push(make("article"));
-    let [h2Element, figureElement, pElement] = [make("h2"), make("figure"), make("p")];
-    h2Element.innerHTML=picArray[i].title;
-    pElement.innerHTML=picArray[i].description;
 
-    let [imgElement, figcaptionElement] = [make("img"), make("figcaption")];
-    imgElement.setAttribute("src", picArray[i].image.medium);
-    imgElement.setAttribute("alt", picArray[i].title);
-    figcaptionElement.innerHTML=picArray[i].title;
-    figureElement.appendChild(imgElement);
-    figureElement.appendChild(figcaptionElement);
-
-
-    let article = make("article");
-    article.appendChild(h2Element);
-    article.appendChild(figureElement);
-    article.appendChild(pElement);
-    target.appendChild(article);
-  }
+const target = document.getElementById("pictures");
+function make(element){
+  return document.createElement(element);
 }
-quinque();
+for(let i in picArray){
+  let [h2Element, figureElement, pElement] = [make("h2"), make("figure"), make("p")];
+  h2Element.innerHTML=picArray[i].title;
+  pElement.innerHTML=picArray[i].description;
+
+  let [imgElement, figcaptionElement] = [make("img"), make("figcaption")];
+  imgElement.setAttribute("src", picArray[i].image.medium);
+  imgElement.setAttribute("alt", picArray[i].title);
+  figcaptionElement.innerHTML=picArray[i].title;
+  figureElement.appendChild(imgElement);
+  figureElement.appendChild(figcaptionElement);
+
+
+  let article = make("article");
+  article.appendChild(h2Element);
+  article.appendChild(figureElement);
+  article.appendChild(pElement);
+  article.addEventListener("click", dialogShow.bind(i))
+  target.appendChild(article);
+}
+
+
+const dialog = document.getElementsByTagName("dialog")[0];
+const dialogImage = dialog.childNodes[3];
+const dialogSpan = dialog.childNodes[1];
+dialogSpan.addEventListener("click", function(){dialog.close()});
+dialogSpan.setAttribute("cursor", "pointer");
+dialogSpan.addEventListener("mouseover", function(){document.body.style.cursor = "pointer"});
+dialogSpan.addEventListener("mouseout", function(){document.body.style.cursor = "default"});
+
+
+function dialogShow(){
+  dialogImage.setAttribute("src", picArray[this].image.large);
+  dialogImage.setAttribute("alt", picArray[this].title);
+  dialog.showModal();
+}
+
