@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta carset="utf-8">
+        <script defer src="js"></script>
+        <title>M4</title>
+        <link rel="icon" type="image/x-icon" href="favicon3.ico">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="tasks">
+
+            <div>
+                <form action="https://api.tvmaze.com/search/shows">
+                    <input id="query" name="q" type="text">
+                    <input type="submit" value="Search">
+                </form>
+            </div>
+
+            <div>
+                <form action="https://api.tvmaze.com/search/shows">
+                    <input id="query" name="q" type="text">
+                    <input type="submit" value="Search">
+                </form>
+            </div>
+
+            <button type="button" onclick="loadDoc()">Change Content</button>
+            <div id="demo"></div>
+
+        </div>
+    </body>
+</html>
