@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta carset="utf-8">
-        <script defer src="js"></script>
+        <script defer src="js.js"></script>
         <title>M4</title>
         <link rel="icon" type="image/x-icon" href="favicon3.ico">
         <link rel="stylesheet" href="style.css">
@@ -10,23 +10,58 @@
     <body>
         <div id="tasks">
 
-            <div>
-                <form action="https://api.tvmaze.com/search/shows">
-                    <input id="query" name="q" type="text">
+            <div class="task">
+                <h2>I</h2>
+                <p>An app that retrieves information about a TV series you enter and displays it on a new wepgage.</p>
+                <form id="one" action="https://api.tvmaze.com/search/shows" target="_blank">
+                    <input id="query1" name="q" type="text">
                     <input type="submit" value="Search">
                 </form>
             </div>
 
-            <div>
-                <form action="https://api.tvmaze.com/search/shows">
-                    <input id="query" name="q" type="text">
+            <div class="task">
+                <h2>II</h2>
+                <p>An app that retrieves information about a TV series you enter and displays it on console.</p>
+                <form id="two">
+                    <input id="query2" name="q" type="text">
                     <input type="submit" value="Search">
                 </form>
             </div>
 
-            <button type="button" onclick="loadDoc()">Change Content</button>
-            <div id="demo"></div>
+            <div class="task">
+                <h2>III</h2>
+                <p>An app that retrieves information about a TV series you enter and displays it on the page.</p>
+                <form id="three">
+                    <input id="query3" name="q" type="text">
+                    <input type="submit" value="Search">
+                </form>
+            </div>
 
+            <div class="task">
+                <h2>IV</h2>
+                <p>An app that retrieves information about a TV series you enter and displays it on the page. Uses a ternary oeprator.</p>
+                <form id="four">
+                    <input id="query4" name="q" type="text">
+                    <input type="submit" value="Search">
+                </form>
+            </div>
+
+            <div class="task">
+                <h2>V</h2>
+                <p>Shows a Chuck Norris joke in console.</p>
+                <button id="chuckButton">Chuck Norris Joke Button</button>
+            </div>
+
+            <div class="task">
+                <h2>VI</h2>
+                <p>Shows Chuck Norris jokes</p>
+                <form id="six">
+                    <input id="query6" name="q" type="text">
+                    <input type="submit" value="Search">
+                </form>
+            </div>
+
+            <div id="output"></div>
         </div>
     </body>
 </html>

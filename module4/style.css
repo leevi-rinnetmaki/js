@@ -1,0 +1,23 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+#tasks{
+    max-width: 1500px;
+    background-color: rgb(227, 128, 16);
+    margin: 20px auto;
+    padding: 20px;
+}
+.task{
+    margin: 50px 20px;
+    padding: 20px;
+    background-color:rgb(200, 200, 200)
+}
+
+.article3{
+    margin: 100px 50px;
+    padding: 20px;
+    background-color: rgb(200, 200, 200);
+}
