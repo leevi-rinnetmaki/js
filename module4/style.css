@@ -4,9 +4,13 @@
     box-sizing: border-box;
 }
 
+body{
+    background-color: rgb(95, 151, 255);
+}
 #tasks{
     max-width: 1500px;
     background-color: rgb(227, 128, 16);
+    background-color: rgb(16, 65, 227);
     margin: 20px auto;
     padding: 20px;
 }
@@ -16,8 +20,15 @@
     background-color:rgb(200, 200, 200)
 }
 
+#output{
+    max-width: 1500px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgb(43, 104, 226);
+}
+
 .article3{
-    margin: 100px 50px;
+    margin: 30px 0px;
     padding: 20px;
     background-color: rgb(200, 200, 200);
 }
